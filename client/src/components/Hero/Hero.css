@@ -1,0 +1,161 @@
+.hero-wrapper {
+  color: rgb(0, 0, 0);
+  position: relative;
+  z-index: 1;
+  padding-bottom: 2rem;
+}
+
+
+.hero-container {
+  justify-content: space-around;
+  align-items: flex-end; 
+}
+
+
+/* left side */
+.hero-left {
+  gap: 3rem;
+}
+.hero-title {
+  position: relative;
+  z-index: 1;
+}
+.hero-title > h1 {
+  font-weight: 600;
+  font-size: 3.8rem;
+  line-height: 4rem;
+}
+.orange-circle {
+  height: 4rem;
+  width: 4rem;
+  background: rgb(119, 116, 116);
+  border-radius: 999px;
+  position: absolute;
+  box-shadow: 25px 25px 48px #ffffff3b, -25px -25px 48px ;
+  right: 28%;
+  top: -10%;
+  z-index: -1;
+}
+.search-bar {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: 3px solid rgba(120, 120, 120, 0.374);
+  padding: 0.5rem 1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+.search-bar > input {
+  border: none;
+  outline: none;
+}
+.stats{
+    width: 100%;
+    justify-content: space-between;
+}
+.stat>:nth-child(1)
+{
+    font-size: 2rem;
+}
+.stat>:nth-child(1)>:last-child{
+    color: rgba(255, 166, 0, 0.11);
+}
+/* right side */
+
+.image-container {
+  width: 30rem;
+  height: 35rem;
+  overflow: hidden;
+  border-radius: 15rem 15rem 0 0;
+  border: 8px solid rgba(255, 255, 255, 0.12);
+}
+.image-container>img{
+    width: 100%;
+    height: 100%;
+}
+
+/* mobile screens */
+@media  (max-width: 640px){
+  .hero-container{
+    margin-top: 2rem;
+  }
+  .hero-title>h1{
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  .image-container{
+    width: 95%;
+    height: 25rem;
+  }
+  .stats{
+    justify-content: center;
+    gap: 1.5rem;
+    font-weight: wrap;
+  }
+  .stat>:nth-child(1){
+    font-size: 1.5rem;
+  }
+  .stat>:nth-child(2)
+  {
+    font-size: 0.8rem;
+  }
+}
+
+#card {
+  width: 200px;
+  height: 280px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: inset 1px 1px 0.12px rgba(255, 255, 255, 0.4),
+    1px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  animation: move 5s ease-in-out infinite;
+  background-clip: padding-box;
+  position: absolute;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-200px);
+  }
+  50% {
+    transform: translateX(400px);
+  }
+  100% {
+    transform: translateX(-200px);
+  }
+}
+
+#rect {
+  top: 30px;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: inset 1px 1px 0.12px rgba(255, 255, 255, 0.4),
+    1px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: absolute;
+}
+
+#circle {
+  bottom: 100px;
+  left: calc(100vw / 3);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 1px 1px 0.12px rgba(255, 255, 255, 0.4),
+    1px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: absolute;
+}
