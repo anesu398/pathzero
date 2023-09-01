@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
      domain="dev-1ltkpsve3z15p8zz.us.auth0.com"
      clientId="PwEZnCxQEBw2BRnwTlKnFVOPbapo3hCF"
      authorizationParams={{
-      redirect_uri: "http://localhost:5173"
+      redirect_uri: "https://feelathome.vercel.app"
      }}
      audience="http://localhost:8000"
      scope="openid profile email"
