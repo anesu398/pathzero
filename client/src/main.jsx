@@ -7,12 +7,12 @@ import { Auth0Provider } from "@auth0/auth0-react";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth0Provider
-     domain="dev-1ltkpsve3z15p8zz.us.auth0.com"
-     clientId="PwEZnCxQEBw2BRnwTlKnFVOPbapo3hCF"
+     domain="dev-170zp23ddyxskfm0.us.auth0.com"
+     clientId="r6qKlgBhZZ6MdhAmcWFswNEnDgW9Uc8R"
      authorizationParams={{
       redirect_uri: "https://feelathome.vercel.app"
      }}
-     audience="https://feelathome-server.vercel.app"
+     audience="https://localhost:8000"
      scope="openid profile email"
     >
       <App />
