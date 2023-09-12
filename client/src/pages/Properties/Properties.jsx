@@ -10,7 +10,7 @@ const Properties = () => {
   if (isError) {
     return (
       <div className="wrapper">
-        <span>Error while fetching data</span>
+        <span>Error while fecthing information from the database</span>
       </div>
     );
   }
