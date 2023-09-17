@@ -1,7 +1,7 @@
 .App{
   position: relative;
   overflow-x: clip;
-  background-color: rgb(255, 255, 255);
+  background-color: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
 }
 .App>:nth-child(1)
 {

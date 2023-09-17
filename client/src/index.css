@@ -1,10 +1,10 @@
 :root {
-  --primary: #080a0c;
+  --primary: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
   --secondary: rgb(0, 0, 0);
-  --black: #ebf5fc;
-  --blue-gradient: linear-gradient(97.05deg, #4066ff 3.76%, #2949c6 100%);
+  --black: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
+  --blue-gradient: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
   --orange-gradient: linear-gradient(270deg, #ffb978 0%, #ff922d 100%);
-  --blue: #4066ff;
+  --blue: #211d22;
   --lightBlue: #eeeeff00;
   --shadow: 0px 23px 21px -8px rgba(136, 160, 255, 0.25);
 }
@@ -18,7 +18,7 @@
   scroll-behavior: smooth;
 }
 .wrapper{
-  background-color: white;
+  background-color: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
 }
 a {
   color: inherit;
