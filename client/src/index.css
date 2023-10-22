@@ -1,7 +1,7 @@
 :root {
-  --primary: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
+  --primary: linear-gradient(97.05deg, #ffffff 5%, #928dab 100%);
   --secondary: rgb(0, 0, 0);
-  --black: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
+  --black: linear-gradient(97.05deg, #fefeff 5%, #d3d2da 100%);
   --blue-gradient: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
   --orange-gradient: linear-gradient(270deg, #ffb978 0%, #ff922d 100%);
   --blue: #211d22;
@@ -18,7 +18,7 @@
   scroll-behavior: smooth;
 }
 .wrapper{
-  background-color: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
+  background-color: linear-gradient(97.05deg, #ffffff 5%, #928dab 100%);
 }
 a {
   color: inherit;
