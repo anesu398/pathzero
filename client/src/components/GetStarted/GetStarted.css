@@ -12,7 +12,7 @@
     font-weight: 600;
 }
 .inner-container .secondaryText{
-    color: rgba(255, 255, 255, 0.587);
+    color: rgb(20, 20, 20);
 }
 .inner-container .button {
     background: #16171d;
