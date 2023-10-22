@@ -3,7 +3,7 @@
   --secondary: rgb(0, 0, 0);
   --black: linear-gradient(97.05deg, #fefeff 5%, #d3d2da 100%);
   --blue-gradient: linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
-  --orange-gradient: linear-gradient(270deg, #ffb978 0%, #ff922d 100%);
+  --orange-gradient: linear-gradient(270deg, #000000 0%, #000000 100%);
   --blue: #211d22;
   --lightBlue: #eeeeff00;
   --shadow: 0px 23px 21px -8px rgba(136, 160, 255, 0.25);
