@@ -3,7 +3,7 @@
     background: linear-gradient(97.05deg, #f3f3f3 5%, #928dab 100%);
     padding: 2rem;
     border-radius: 10px;
-    border: 6px solid linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
+    border: 6px solid linear-gradient(97.05deg, #cccbce 5%, #928dab 100%);
     text-align: center;
 }
 
@@ -15,7 +15,7 @@
     color: rgba(255, 255, 255, 0.587);
 }
 .inner-container .button {
-    background: #5a73d7;
+    background: #16171d;
     border: 2px solid linear-gradient(97.05deg, #1f1c2c 5%, #928dab 100%);
     box-shadow: var(--shadow);
     border-radius: 10px;
