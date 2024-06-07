@@ -1,28 +1,77 @@
 import asyncHandler from "express-async-handler";
-
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import { prisma } from "../config/prismaConfig.js";
 
+// Function to create a user
 export const createUser = asyncHandler(async (req, res) => {
   console.log("creating a user");
 
-  let { email } = req.body;
-  const userExists = await prisma.user.findUnique({ where: { email: email } });
+  let { email, password } = req.body;
+  const userExists = await prisma.user.findFirst({ where: { email } });
   if (!userExists) {
-    const user = await prisma.user.create({ data: req.body });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await prisma.user.create({
+      data: {
+        ...req.body,
+        password: hashedPassword,
+      },
+    });
     res.send({
       message: "User registered successfully",
       user: user,
     });
-  } else res.status(201).send({ message: "User already registered" });
+  } else {
+    res.status(201).send({ message: "User already registered" });
+  }
 });
 
-// function to book a visit to resd
+// Function to login a user
+export const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await prisma.user.findFirst({
+      where: { email },
+    });
+
+    if (!user) {
+      res.status(401).json({ message: "Invalid email or password" });
+      return;
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      res.status(401).json({ message: "Invalid email or password" });
+      return;
+    }
+
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    res.json({
+      message: "Login successful",
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      },
+    });
+  } catch (err) {
+    throw new Error(err.message);
+  }
+});
+
+// Function to book a visit to residency
 export const bookVisit = asyncHandler(async (req, res) => {
   const { email, date } = req.body;
   const { id } = req.params;
 
   try {
-    const alreadyBooked = await prisma.user.findUnique({
+    const alreadyBooked = await prisma.user.findFirst({
       where: { email },
       select: { bookedVisits: true },
     });
@@ -33,23 +82,23 @@ export const bookVisit = asyncHandler(async (req, res) => {
         .json({ message: "This residency is already booked by you" });
     } else {
       await prisma.user.update({
-        where: { email: email },
+        where: { email },
         data: {
           bookedVisits: { push: { id, date } },
         },
       });
-      res.send("your visit is booked successfully");
+      res.send("Your visit is booked successfully");
     }
   } catch (err) {
     throw new Error(err.message);
   }
 });
 
-// funtion to get all bookings of a user
+// Function to get all bookings of a user
 export const getAllBookings = asyncHandler(async (req, res) => {
   const { email } = req.body;
   try {
-    const bookings = await prisma.user.findUnique({
+    const bookings = await prisma.user.findFirst({
       where: { email },
       select: { bookedVisits: true },
     });
@@ -59,13 +108,13 @@ export const getAllBookings = asyncHandler(async (req, res) => {
   }
 });
 
-// function to cancel the booking
+// Function to cancel the booking
 export const cancelBooking = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const { id } = req.params;
   try {
-    const user = await prisma.user.findUnique({
-      where: { email: email },
+    const user = await prisma.user.findFirst({
+      where: { email },
       select: { bookedVisits: true },
     });
 
@@ -89,13 +138,13 @@ export const cancelBooking = asyncHandler(async (req, res) => {
   }
 });
 
-// function to add a resd in favourite list of a user
+// Function to add a residency in the favorite list of a user
 export const toFav = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const { rid } = req.params;
 
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: { email },
     });
 
@@ -126,11 +175,11 @@ export const toFav = asyncHandler(async (req, res) => {
   }
 });
 
-// function to get all favorites
+// Function to get all favorites
 export const getAllFavorites = asyncHandler(async (req, res) => {
   const { email } = req.body;
   try {
-    const favResd = await prisma.user.findUnique({
+    const favResd = await prisma.user.findFirst({
       where: { email },
       select: { favResidenciesID: true },
     });
